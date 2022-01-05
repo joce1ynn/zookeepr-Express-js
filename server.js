@@ -1,6 +1,8 @@
 const express = require("express");
 const { animals } = require("./data/animals.json");
 
+// 通过 Heroku 服务的应用程序以及大多数主机必须在端口 80 上运行。如果主机使用 HTTPS，则端口将设置为 443
+const PORT = process.env.PORT || 3001;
 const app = express();
 
 function filterByQuery(query, animalsArray) {
@@ -61,8 +63,8 @@ app.get("/api/animals", (req, res) => {
 });
 
 // add the following code to the end of server.js:
-app.listen(3001, () => {
-  console.log(`API server now on port 3001!`);
+app.listen(PORT, () => {
+  console.log(`API server now on port ${PORT}!`);
 });
 
 // If you're browsing the internet, chances are you're visiting the address on one of two ports: 80 or 443.
