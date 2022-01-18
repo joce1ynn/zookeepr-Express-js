@@ -252,6 +252,16 @@
         "hungry"
       ],
       "id": "26"
+    },
+    {
+      "name": "dog",
+      "species": "quan",
+      "diet": "herbivore",
+      "personalityTraits": [
+        "hungry",
+        "loving"
+      ],
+      "id": "27"
     }
   ]
 }

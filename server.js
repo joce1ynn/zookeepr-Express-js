@@ -6,6 +6,11 @@ const { animals } = require("./data/animals");
 const PORT = process.env.PORT || 3001;
 const app = express();
 
+//请求前端资源
+// express.static() provide a file path to the public folder
+// instruct the server to make these files static resources.
+// all of our front-end code can now be accessed without having a specific server endpoint created for it!
+app.use(express.static("public"));
 // parse incoming string or array data
 //app.use() The functions are referred to as middleware.
 app.use(express.urlencoded({ extended: true }));
@@ -115,6 +120,26 @@ app.post("/api/animals", (req, res) => {
 
     res.json(animal);
   }
+});
+
+// app.get() 响应一个 HTML 页面以显示在浏览器中. 请求前端资源
+//request to the server's route / and it responded with the HTML
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "./public/index.html"));
+});
+
+//just like api/animals
+app.get("/animals", (req, res) => {
+  res.sendFile(path.join(__dirname, "./public/animals.html"));
+});
+
+app.get("/zookeepers", (req, res) => {
+  res.sendFile(path.join(__dirname, "./public/zookeepers.html"));
+});
+
+//当客户端请求一个不存在的路由时，用*返回。路线*应始终排在最后。
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "./public/index.html"));
 });
 
 app.listen(PORT, () => {
