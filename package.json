@@ -1,7 +1,7 @@
 {
   "name": "m11-zookeepr",
   "version": "1.0.0",
-  "description": "",
+  "description": "## Built With: * HTML * CSS * Javascript * Express.js * JEST",
   "main": "server.js",
   "scripts": {
     "test": "jest",
@@ -23,5 +23,8 @@
   },
   "devDependencies": {
     "jest": "^27.4.7"
+  },
+  "directories": {
+    "lib": "lib"
   }
 }

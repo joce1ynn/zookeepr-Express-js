@@ -1,12 +1,17 @@
+// create express server
 const express = require('express');
 
+// specifying port to work with the right environment or the directed local host
 const PORT = process.env.PORT || 3001;
+
+// initiating the app
 const app = express();
+
+// get routes
 const apiRoutes = require('./routes/apiRoutes');
 const htmlRoutes = require('./routes/htmlRoutes');
 
-//请求前端资源
-// parse incoming string or array data
+//请求前端资源 middleware
 //app.use() The functions are referred to as middleware.
 app.use(express.urlencoded({ extended: true }));
 // parse incoming JSON data
@@ -20,6 +25,7 @@ app.use(express.static('public'));
 app.use('/api', apiRoutes);
 app.use('/', htmlRoutes);
 
+// app is listening to the port
 app.listen(PORT, () => {
   console.log(`API server now on port ${PORT}!`);
 });
